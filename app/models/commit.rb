@@ -88,6 +88,19 @@ class Commit
     description.present?
   end
 
+  def hook_attrs project
+    {
+      id: self.id,
+      message: self.safe_message,
+      timestamp: self.committed_date.xmlschema,
+      url: "#{Gitlab.config.gitlab.url}/#{project.path_with_namespace}/commit/#{self.id}",
+      author: {
+        name: self.author_name,
+        email: self.author_email
+      }
+    }
+  end
+
   # Discover issues should be closed when this commit is pushed to a project's
   # default branch.
   def closes_issues project

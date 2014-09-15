@@ -114,6 +114,12 @@ class MergeRequest < ActiveRecord::Base
   scope :closed, -> { with_states(:closed, :merged) }
   scope :declined, -> { with_states(:closed) }
 
+  def hook_attrs
+    self.attributes.merge!(source: self.source_project.hook_attrs,
+                           target: self.target_project.hook_attrs,
+                           last_commit: self.last_commit.hook_attrs(self.source_project))
+  end
+
   def validate_branches
     if target_project == source_project && target_branch == source_branch
       errors.add :branch_conflict, "You can not use same project/branch for source and target"

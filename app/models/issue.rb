@@ -48,6 +48,10 @@ class Issue < ActiveRecord::Base
     state :closed
   end
 
+  def hook_attrs
+    self.attributes
+  end
+
   # Mentionable overrides.
 
   def gfm_reference
