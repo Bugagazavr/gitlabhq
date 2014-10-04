@@ -1,4 +1,5 @@
 # ![logo](https://about.gitlab.com/images/gitlab_logo.png) GitLab
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Bugagazavr/gitlabhq?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Open source software to collaborate on code
 
